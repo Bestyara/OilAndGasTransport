@@ -1,0 +1,15 @@
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\bin\Debug\net6.0\OilAndGasTransport.exe
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\bin\Debug\net6.0\OilAndGasTransport.deps.json
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\bin\Debug\net6.0\OilAndGasTransport.runtimeconfig.json
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\bin\Debug\net6.0\OilAndGasTransport.dll
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\bin\Debug\net6.0\OilAndGasTransport.pdb
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.csproj.AssemblyReference.cache
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.GeneratedMSBuildEditorConfig.editorconfig
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.AssemblyInfoInputs.cache
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.AssemblyInfo.cs
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.csproj.CoreCompileInputs.cache
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.dll
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\refint\OilAndGasTransport.dll
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.pdb
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\OilAndGasTransport.genruntimeconfig.cache
+D:\WebProjects\OilAndGasTransport\OilAndGasTransport\obj\Debug\net6.0\ref\OilAndGasTransport.dll
