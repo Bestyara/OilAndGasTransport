@@ -36,6 +36,21 @@ namespace OilAndGasTransport
                 }
             }
         }
+        public static int checkInputInt()
+        {
+            while (true)
+            {
+                try
+                {
+                    var inp = Convert.ToInt32(Console.ReadLine());
+                    return inp;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Попробуйте еще раз:");
+                }
+            }
+        }
         static void Main(string[] args)
         {
             CompressorStation cs = new CompressorStation();
@@ -43,14 +58,14 @@ namespace OilAndGasTransport
             var key = Console.ReadKey(true).KeyChar;
             while (key != '0')
             {
-                Console.WriteLine("1.Добавить трубу");
+                Console.WriteLine("\n1.Добавить трубу");
                 Console.WriteLine("2.Добавить КС");
                 Console.WriteLine("3.Просмотр всех объектов");
                 Console.WriteLine("4.Редактировать трубу");
                 Console.WriteLine("5.Редактировать КС");
                 Console.WriteLine("6.Сохранить");
                 Console.WriteLine("7.Загрузить");
-                Console.WriteLine("0.Выход");
+                Console.WriteLine("0.Выход\n");
                 key = Console.ReadKey(true).KeyChar;
                 switch (key)
                 {
@@ -61,16 +76,24 @@ namespace OilAndGasTransport
                         p.Diameter = checkInputDouble();
                         Console.WriteLine("В ремонте труба или нет:");
                         p.IsRepairing = checkInputBoolean();
-                        p.Add(p);
+                        p.Add();
                         break;
                     case '2':
-                        cs.Add(cs);
+                        Console.WriteLine("Введите название компрессорной станции:");
+                        cs.Name = Console.ReadLine();
+                        Console.WriteLine("Введите количество цехов:");
+                        cs.Wscount = checkInputInt();
+                        Console.WriteLine("Введите количество цехов в работе:");
+                        cs.Wsinwork = checkInputInt();
+                        Console.WriteLine("Введите коэффициент эффективности:");
+                        cs.Efficiency = checkInputDouble();
+                        cs.Add();
                         break;
                     case '3':
                         Console.WriteLine("Все объекты:");
                         foreach (var p1 in p.lstp)
                         {
-                            Console.WriteLine("Труба:");
+                            Console.WriteLine("\nТруба:");
                             Console.WriteLine($"ID: {p1.ID}");
                             Console.WriteLine($"Длина: {p1.Length}");
                             Console.WriteLine($"Диаметр: {p1.Diameter}");
@@ -78,7 +101,7 @@ namespace OilAndGasTransport
                         }
                         foreach (var cs1 in cs.lstcs)
                         {
-                            Console.WriteLine("Компрессорная станция:");
+                            Console.WriteLine("\nКомпрессорная станция:");
                             Console.WriteLine($"ID: {cs1.ID}");
                             Console.WriteLine($"Название: {cs1.Name}");
                             Console.WriteLine($"Количество цехов: {cs1.Wscount}");

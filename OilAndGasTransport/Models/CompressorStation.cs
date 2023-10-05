@@ -10,7 +10,18 @@ namespace OilAndGasTransport.Models
     internal class CompressorStation : ICompressorStation
     {
         public List<CompressorStation> lstcs = new List<CompressorStation>();
-        public int ID { get; set; }
+        private int _id = 0;
+        public int ID 
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                _id = value;
+            }
+        }
         public string? Name { get; set; }
         public int Wscount { get; set; }
         public int Wsinwork { get; set; }
@@ -24,9 +35,10 @@ namespace OilAndGasTransport.Models
             Wsinwork = wsinwork;
             Efficiency = efficiency;
         }
-        public void Add(CompressorStation cs)
-        { 
-            lstcs.Add(cs);
+        public void Add()
+        {
+            ID += 1;
+            lstcs.Add(new CompressorStation(ID,Name,Wscount,Wsinwork,Efficiency));
         }
     }
 }

@@ -10,7 +10,18 @@ namespace OilAndGasTransport.Models
     internal class Pipe : IPipe
     {
         public List<Pipe> lstp = new List<Pipe>();
-        public int ID { get; set; }
+        private int _id = 0;
+        public int ID 
+        {
+            get 
+            {
+                return _id;
+            }
+            set 
+            {
+                _id = value; 
+            }
+        }
         public double Length { get; set; }
         public double Diameter { get; set; }
         public bool IsRepairing { get; set; }
@@ -22,9 +33,10 @@ namespace OilAndGasTransport.Models
             Diameter = diameter;
             IsRepairing = isrepairing;
         }
-        public void Add(Pipe cs)
+        public void Add()
         {
-            lstp.Add(cs);
+            ID += 1;
+            lstp.Add(new Pipe(ID,Length,Diameter,IsRepairing));
         }
     }
 }
