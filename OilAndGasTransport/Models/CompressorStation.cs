@@ -1,4 +1,5 @@
 ﻿using OilAndGasTransport.Interfaces;
+using OilAndGasTransport.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,32 @@ namespace OilAndGasTransport.Models
         }
         public void Add()
         {
+            Console.WriteLine("Введите название компрессорной станции:");
+            Name = Console.ReadLine();
+            Console.WriteLine("Введите количество цехов:");
+            Wscount = checkServices.checkInputInt();
+            Console.WriteLine("Введите количество цехов в работе:");
+            Wsinwork = checkServices.checkInputInt();
+            Console.WriteLine("Введите коэффициент эффективности:");
+            Efficiency = checkServices.checkInputDouble();
             ID += 1;
-            lstcs.Add(new CompressorStation(ID,Name,Wscount,Wsinwork,Efficiency));
+            lstcs.Add(new CompressorStation(ID, Name, Wscount, Wsinwork, Efficiency));
+        }
+        public void printCompressorStation()
+        {
+            foreach (var cs1 in lstcs)
+            {
+                Console.WriteLine("\nКомпрессорная станция:");
+                Console.WriteLine($"ID: {ID}");
+                Console.WriteLine($"Название: {Name}");
+                Console.WriteLine($"Количество цехов: {Wscount}");
+                Console.WriteLine($"Количество цехов в работе: {Wsinwork}");
+                Console.WriteLine($"Коэффициент эффективности: {Efficiency}");
+            }
+        }
+        public void Change()
+        {
+            Console.ReadLine();
         }
     }
 }

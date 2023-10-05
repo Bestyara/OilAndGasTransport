@@ -1,4 +1,5 @@
 ﻿using OilAndGasTransport.Interfaces;
+using OilAndGasTransport.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,25 @@ namespace OilAndGasTransport.Models
         }
         public void Add()
         {
+            Console.WriteLine("Введите длину трубы:");
+            Length = checkServices.checkInputDouble();
+            Console.WriteLine("Введите диаметр трубы:");
+            Diameter = checkServices.checkInputDouble();
+            Console.WriteLine("В ремонте труба или нет:");
+            IsRepairing = checkServices.checkInputBoolean();
             ID += 1;
-            lstp.Add(new Pipe(ID,Length,Diameter,IsRepairing));
+            lstp.Add(new Pipe(ID, Length, Diameter, IsRepairing));
+        }
+        public void printPipe()
+        {
+            foreach (var p1 in lstp)
+            {
+                Console.WriteLine("\nТруба:");
+                Console.WriteLine($"ID: {ID}");
+                Console.WriteLine($"Длина трубы: {Length}");
+                Console.WriteLine($"Величина диаметра: {Diameter}");
+                Console.WriteLine($"В ремонте труба или нет: {IsRepairing}");
+            }
         }
     }
 }
