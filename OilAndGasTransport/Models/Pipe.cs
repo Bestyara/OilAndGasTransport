@@ -11,16 +11,17 @@ namespace OilAndGasTransport.Models
     internal class Pipe : IPipe
     {
         public List<Pipe> lstp = new List<Pipe>();
+        public PipeServices services = new PipeServices();
         private int _id = 0;
-        public int ID 
+        public int ID
         {
-            get 
+            get
             {
                 return _id;
             }
-            set 
+            set
             {
-                _id = value; 
+                _id = value;
             }
         }
         public double Length { get; set; }
@@ -36,25 +37,15 @@ namespace OilAndGasTransport.Models
         }
         public void Add()
         {
-            Console.WriteLine("Введите длину трубы:");
-            Length = checkServices.checkInputDouble();
-            Console.WriteLine("Введите диаметр трубы:");
-            Diameter = checkServices.checkInputDouble();
-            Console.WriteLine("В ремонте труба или нет:");
-            IsRepairing = checkServices.checkInputBoolean();
-            ID += 1;
-            lstp.Add(new Pipe(ID, Length, Diameter, IsRepairing));
+            services.AddPipe(new Pipe(ID,Length,Diameter,IsRepairing),lstp);
         }
         public void printPipe()
         {
-            foreach (var p1 in lstp)
-            {
-                Console.WriteLine("\nТруба:");
-                Console.WriteLine($"ID: {ID}");
-                Console.WriteLine($"Длина трубы: {Length}");
-                Console.WriteLine($"Величина диаметра: {Diameter}");
-                Console.WriteLine($"В ремонте труба или нет: {IsRepairing}");
-            }
+            services.printPipe(lstp);
+        }
+        public void changePipe()
+        {
+            services.changePipe(lstp);
         }
     }
 }

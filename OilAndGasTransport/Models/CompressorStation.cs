@@ -11,6 +11,7 @@ namespace OilAndGasTransport.Models
     internal class CompressorStation : ICompressorStation
     {
         public List<CompressorStation> lstcs = new List<CompressorStation>();
+        CompressorStationServices services = new CompressorStationServices();
         private int _id = 0;
         public int ID 
         {
@@ -38,32 +39,15 @@ namespace OilAndGasTransport.Models
         }
         public void Add()
         {
-            Console.WriteLine("Введите название компрессорной станции:");
-            Name = Console.ReadLine();
-            Console.WriteLine("Введите количество цехов:");
-            Wscount = checkServices.checkInputInt();
-            Console.WriteLine("Введите количество цехов в работе:");
-            Wsinwork = checkServices.checkInputInt();
-            Console.WriteLine("Введите коэффициент эффективности:");
-            Efficiency = checkServices.checkInputDouble();
-            ID += 1;
-            lstcs.Add(new CompressorStation(ID, Name, Wscount, Wsinwork, Efficiency));
+            services.AddCompressorStation(new CompressorStation(ID,Name,Wscount,Wsinwork,Efficiency), lstcs);
         }
         public void printCompressorStation()
         {
-            foreach (var cs1 in lstcs)
-            {
-                Console.WriteLine("\nКомпрессорная станция:");
-                Console.WriteLine($"ID: {ID}");
-                Console.WriteLine($"Название: {Name}");
-                Console.WriteLine($"Количество цехов: {Wscount}");
-                Console.WriteLine($"Количество цехов в работе: {Wsinwork}");
-                Console.WriteLine($"Коэффициент эффективности: {Efficiency}");
-            }
+            services.printCompressorStation(lstcs);
         }
-        public void Change()
+        public void ChangeCompressorStation()
         {
-            Console.ReadLine();
+            services.ChangeCompressorStation(lstcs);
         }
     }
 }
