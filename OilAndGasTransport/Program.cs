@@ -20,8 +20,8 @@ namespace OilAndGasTransport
                 Console.WriteLine("3.Просмотр всех объектов");
                 Console.WriteLine("4.Редактировать трубу");
                 Console.WriteLine("5.Редактировать КС");
-                Console.WriteLine("6.Сохранить");
-                Console.WriteLine("7.Загрузить");
+                Console.WriteLine("6.Сохранить данные в файл");
+                Console.WriteLine("7.Загрузить данные из файла");
                 Console.WriteLine("0.Выход\n");
                 key = Console.ReadKey(true).KeyChar;
                 Console.Clear();
@@ -52,17 +52,24 @@ namespace OilAndGasTransport
                         Console.Clear();
                         break;
                     case '6':
+                        File.WriteAllText("DataFile.txt", "");
+                        p.savePipe();
+                        cs.saveCompressorStation();
+                        Console.WriteLine("Сохранение произошло успешно");
+                        Console.WriteLine("\nНажмите любую клавишу для выхода в главное меню");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                     case '7':
                         break;
                     case '0':
+                        Console.WriteLine("Программа завершена успешно!");
                         break;
                     default:
                         Console.WriteLine("Неправильный ввод, попробуйте еще раз");
                         break;
                 }
             }
-            Console.WriteLine("Программа завершена успешно!");
         }
     }
 }

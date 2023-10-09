@@ -1,4 +1,5 @@
 ﻿using OilAndGasTransport.Models;
+using System.IO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,6 +75,18 @@ namespace OilAndGasTransport.Services
                 lstp.Insert(p.ID-1,p);
                 Console.WriteLine("Изменение произошло успешно!");
             }
+        }
+        public void savePipe(List<Pipe> lstp)
+        {
+            foreach (var p in lstp)
+            {
+                File.AppendAllText("DataFile.txt",$"Труба #{p.ID}\nДлина трубы: {p.Length}\nДиаметр трубы: {p.Diameter}\nТруба в ремонте или нет: {p.IsRepairing}\n\n");
+            }
+        }
+        public void loadPipe(List<Pipe> lstp) 
+        {
+            
+
         }
     }
 }

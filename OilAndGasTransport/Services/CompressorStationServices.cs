@@ -84,5 +84,16 @@ namespace OilAndGasTransport.Services
                 Console.WriteLine("Изменение произошло успешно!");
             }
         }
+        public void saveCompressorStation(List<CompressorStation> lstcs)
+        {
+            foreach (var cs in lstcs)
+            {
+                File.AppendAllText("DataFile.txt", $"Компрессорная станция #{cs.ID}\nНазвание компрессорной станции: {cs.Name}\nКоличество цехов: {cs.Wscount}\nКоличество цехов в работе: {cs.Wsinwork}\nКоэффициент эффективности: {cs.Efficiency}\n\n");
+            }
+        }
+        public void loadCompressorStation(List<CompressorStation> lstcs)
+        {
+
+        }
     }
 }

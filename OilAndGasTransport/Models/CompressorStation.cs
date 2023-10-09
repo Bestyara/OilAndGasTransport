@@ -49,5 +49,9 @@ namespace OilAndGasTransport.Models
         {
             services.ChangeCompressorStation(lstcs);
         }
+        public void saveCompressorStation()
+        {
+            services.saveCompressorStation(lstcs);
+        }
     }
 }
