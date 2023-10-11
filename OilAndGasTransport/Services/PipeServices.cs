@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.Design;
 
 namespace OilAndGasTransport.Services
 {
@@ -80,13 +81,48 @@ namespace OilAndGasTransport.Services
         {
             foreach (var p in lstp)
             {
-                File.AppendAllText("DataFile.txt",$"Труба #{p.ID}\nДлина трубы: {p.Length}\nДиаметр трубы: {p.Diameter}\nТруба в ремонте или нет: {p.IsRepairing}\n\n");
+                File.AppendAllText("DataFile.txt",$"Труба #{p.ID} \nДлина трубы: {p.Length} \nДиаметр трубы: {p.Diameter} \nТруба в ремонте или нет: {p.IsRepairing} \n\n");
             }
         }
         public void loadPipe(List<Pipe> lstp) 
         {
-            
-
+            lstp.Clear();
+            StreamReader sr = new StreamReader("DataFile.txt");
+            var obj = "";
+            do
+            {
+                //Поле ID
+                obj = sr.ReadLine();
+                if (obj[0] == 'К')
+                    break;
+                var id = obj.IndexOf('#') + 1;
+                while (obj.Length < id && !(obj[id].Equals(" ")))
+                    id++;
+                var chid = Convert.ToInt32(obj.Substring(obj.IndexOf('#') + 1, id - obj.IndexOf('#')));
+                //Свойство Length
+                var l = sr.ReadLine();
+                int i = l.IndexOf(':') + 2;
+                while (l.Length < i && !(l[i].Equals(" ")))
+                    i++;
+                var chl = Convert.ToInt32(l.Substring(l.IndexOf(':') + 2, i - l.IndexOf(':')));
+                //Свойство Diameter
+                var d = sr.ReadLine();
+                i = d.IndexOf(':') + 2;
+                while (d.Length < i && !(d[i].Equals(" ")))
+                    i++;
+                var chd = Convert.ToInt32(d.Substring(d.IndexOf(':') + 2, i - d.IndexOf(':')));
+                //Свойство IsRepairing
+                var isrp = sr.ReadLine();
+                i = isrp.IndexOf(':') + 2;
+                var bisrp = true;
+                if (isrp[i].ToString().ToLower().Equals("t"))
+                    bisrp = true;
+                else
+                    bisrp = false;
+                //Добавляем трубу в список
+                lstp.Add(new Pipe(chid, chl, chd, bisrp));
+                sr.ReadLine();
+            } while (obj[0] == 'Т');
         }
     }
 }

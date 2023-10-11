@@ -88,12 +88,61 @@ namespace OilAndGasTransport.Services
         {
             foreach (var cs in lstcs)
             {
-                File.AppendAllText("DataFile.txt", $"Компрессорная станция #{cs.ID}\nНазвание компрессорной станции: {cs.Name}\nКоличество цехов: {cs.Wscount}\nКоличество цехов в работе: {cs.Wsinwork}\nКоэффициент эффективности: {cs.Efficiency}\n\n");
+                File.AppendAllText("DataFile.txt", $"Компрессорная станция #{cs.ID} \nНазвание компрессорной станции: {cs.Name} \nКоличество цехов: {cs.Wscount} \nКоличество цехов в работе: {cs.Wsinwork} \nКоэффициент эффективности: {cs.Efficiency} \n\n");
             }
         }
         public void loadCompressorStation(List<CompressorStation> lstcs)
         {
-
+            lstcs.Clear();
+            StreamReader sr = new StreamReader("DataFile.txt");
+            var obj = "";
+            do
+            {
+                //Поле ID
+                obj = sr.ReadLine();
+                if (obj[0] == 'К')
+                {
+                    var id = obj.IndexOf('#') + 1;
+                    while (obj.Length < id && !(obj[id].Equals(" ")))
+                        id++;
+                    var chid = Convert.ToInt32(obj.Substring(obj.IndexOf('#') + 1, id - obj.IndexOf('#')));
+                    //Свойство Name
+                    var nm = sr.ReadLine();
+                    int i = nm.IndexOf(':') + 2;
+                    while (nm.Length < i && !(nm[i].Equals(" ")))
+                        i++;
+                    var sname = nm.Substring(nm.IndexOf(':') + 2, i - nm.IndexOf(':'));
+                    //Свойство Wscount
+                    var wsc = sr.ReadLine();
+                    i = wsc.IndexOf(':') + 2;
+                    while (wsc.Length < i && !(wsc[i].Equals(" ")))
+                        i++;
+                    var chwsc = Convert.ToInt32(wsc.Substring(wsc.IndexOf(':') + 2, i - wsc.IndexOf(':')));
+                    //Свойство Wsinwork
+                    var wsinw = sr.ReadLine();
+                    i = wsinw.IndexOf(':') + 2;
+                    while (wsinw.Length < i && !(wsinw[i].Equals(" ")))
+                        i++;
+                    var chwsinw = Convert.ToInt32(wsinw.Substring(wsinw.IndexOf(':') + 2, i - wsinw.IndexOf(':')));
+                    //Свойство коэффициент эффективности
+                    var eff = sr.ReadLine();
+                    i = eff.IndexOf(':') + 2;
+                    while (eff.Length < i && !(eff[i].Equals(" ")))
+                        i++;
+                    var cheff = Convert.ToInt32(eff.Substring(eff.IndexOf(':') + 2, i - eff.IndexOf(':')));
+                    //Добавляем трубу в список
+                    lstcs.Add(new CompressorStation(chid, sname, chwsc, chwsinw, cheff));
+                    sr.ReadLine();
+                }
+                else
+                {
+                    sr.ReadLine();
+                    sr.ReadLine();
+                    sr.ReadLine();
+                    sr.ReadLine();
+                    //sr.ReadLine();
+                }
+            } while (sr.Peek()!=-1);
         }
     }
 }

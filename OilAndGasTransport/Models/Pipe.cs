@@ -51,5 +51,9 @@ namespace OilAndGasTransport.Models
         {
             services.savePipe(lstp);
         }
+        public void loadPipe()
+        { 
+            services.loadPipe(lstp);
+        }
     }
 }

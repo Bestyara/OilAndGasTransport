@@ -61,6 +61,13 @@ namespace OilAndGasTransport
                         Console.Clear();
                         break;
                     case '7':
+                        StreamReader sr = new StreamReader("DataFile.txt");
+                        p.loadPipe();
+                        cs.loadCompressorStation();
+                        Console.WriteLine("Загрузка данных из файла произошла успешно");
+                        Console.WriteLine("\nНажмите любую клавишу для выхода в главное меню");
+                        Console.ReadLine();
+                        Console.Clear();
                         break;
                     case '0':
                         Console.WriteLine("Программа завершена успешно!");
